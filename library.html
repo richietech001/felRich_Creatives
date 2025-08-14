@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FelRich Library</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .library-header {
+        background-color: #212529;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+    .category-btn {
+        margin: 0.3rem;
+    }
+    .library-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .library-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 1rem;
+        transition: transform 0.2s ease-in-out;
+    }
+    .library-card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="library-header">
+    <h1>FelRich Creatives Library</h1>
+    <p>Browse Poems, Articles, and Stories</p>
+</div>
+
+<!-- Category Buttons -->
+<div class="container text-center mt-4">
+    <button class="btn btn-outline-primary category-btn" onclick="filterLibrary('All')">All</button>
+    <button class="btn btn-outline-success category-btn" onclick="filterLibrary('Poems')">Poems</button>
+    <button class="btn btn-outline-warning category-btn" onclick="filterLibrary('Articles')">Articles</button>
+    <button class="btn btn-outline-info category-btn" onclick="filterLibrary('Stories')">Stories</button>
+    <button class="btn btn-outline-dark category-btn" onclick="addCategory()">+ Add Category</button>
+</div>
+
+<!-- Library Items -->
+<div class="container">
+    <div class="library-grid" id="libraryGrid">
+        <!-- Sample Data -->
+        <div class="library-card" data-category="Poems">
+            <h5>Mr Middle Man</h5>
+            <p class="text-muted">by Wa.mbugu</p>
+            <a href="poems/mr-middle-man.html" class="btn btn-sm btn-primary">Read More</a>
+        </div>
+        <div class="library-card" data-category="Poems">
+            <h5>The Morning Sun</h5>
+            <p class="text-muted">by Wa.mbugu</p>
+            <a href="poems/the-morning-sun.html" class="btn btn-sm btn-primary">Read More</a>
+        </div>
+        <div class="library-card" data-category="Articles">
+            <h5>Creative Growth in Kenya</h5>
+            <p class="text-muted">by Wambugu</p>
+            <a href="articles/creative-growth.html" class="btn btn-sm btn-primary">Read More</a>
+        </div>
+        <div class="library-card" data-category="Stories">
+            <h5>Beneath the Stars</h5>
+            <p class="text-muted">by Wambugu</p>
+            <a href="stories/beneath-the-stars.html" class="btn btn-sm btn-primary">Read More</a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function filterLibrary(category) {
+        const cards = document.querySelectorAll('.library-card');
+        cards.forEach(card => {
+            if (category === 'All' || card.dataset.category === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function addCategory() {
+        const newCat = prompt("Enter new category name:");
+        if (newCat && newCat.trim() !== '') {
+            const btnContainer = document.querySelector('.container.text-center');
+            const btn = document.createElement('button');
+            btn.className = "btn btn-outline-secondary category-btn";
+            btn.innerText = newCat;
+            btn.onclick = () => filterLibrary(newCat);
+            btnContainer.insertBefore(btn, btnContainer.lastElementChild);
+        }
+    }
+</script>
+
+</body>
+</html>

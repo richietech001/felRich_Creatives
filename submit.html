@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Your Poem</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+    .form-container {
+        background: white;
+        padding: 20px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+    h2 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    input, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+    }
+    button {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Share Your Poem</h2>
+    <form id="poemForm">
+        <input type="text" id="title" placeholder="Poem Title" required>
+        <input type="text" id="author" placeholder="Your Name" required>
+        <textarea id="poem" rows="6" placeholder="Write your poem here..." required></textarea>
+        <button type="submit">Submit Poem</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("poemForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const poemData = {
+        title: document.getElementById("title").value,
+        author: document.getElementById("author").value,
+        content: document.getElementById("poem").value
+    };
+
+    console.log("Poem submitted:", poemData);
+    alert("Poem submitted successfully!");
+
+    // Clear form
+    this.reset();
+});
+</script>
+
+</body>
+</html>
