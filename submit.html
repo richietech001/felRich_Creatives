@@ -1,80 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Submit Your Poem</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #fafafa;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-    }
-    .form-container {
-        background: white;
-        padding: 20px 25px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
-        max-width: 500px;
-    }
-    h2 {
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    input, textarea, button {
-        width: 100%;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 6px;
-        border: 1px solid #ddd;
-        font-size: 1rem;
-    }
-    button {
-        background: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    button:hover {
-        background: #45a049;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Poem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div class="form-container">
+        <h2>Share Your Poem</h2>
+        <form id="poemForm">
+            <input type="text" id="title" placeholder="Poem Title" required>
+            <input type="text" id="author" placeholder="Your Name" required>
+            <textarea id="content" rows="6" placeholder="Write your poem here..." required></textarea>
+            <button type="submit">Submit Poem</button>
+            <div id="loading" class="loading">Submitting...</div>
+            <div id="message" style="margin-top: 10px; text-align: center;"></div>
+        </form>
+    </div>
 
-<div class="form-container">
-    <h2>Share Your Poem</h2>
-    <form id="poemForm">
-        <input type="text" id="title" placeholder="Poem Title" required>
-        <input type="text" id="author" placeholder="Your Name" required>
-        <textarea id="poem" rows="6" placeholder="Write your poem here..." required></textarea>
-        <button type="submit">Submit Poem</button>
-    </form>
-</div>
+    <script src="config.js"></script>
+    <script>
+        document.getElementById("poemForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
 
-<script>
-document.getElementById("poemForm").addEventListener("submit", function(e){
-    e.preventDefault();
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const content = document.getElementById("content").value;
 
-    const poemData = {
-        title: document.getElementById("title").value,
-        author: document.getElementById("author").value,
-        content: document.getElementById("poem").value
-    };
+            // Show loading state
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("message").textContent = "";
 
-    console.log("Poem submitted:", poemData);
-    alert("Poem submitted successfully!");
+            try {
+                const response = await fetch(`${window.env.SUPABASE_URL}/rest/v1/poems`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal',
+                        'apikey': window.env.SUPABASE_API_KEY,
+                        'Authorization': `Bearer ${window.env.SUPABASE_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        title,
+                        author,
+                        content
+                    })
+                });
 
-    // Clear form
-    this.reset();
-});
-</script>
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to submit poem');
+                }
 
+                document.getElementById("message").textContent = "Poem submitted successfully!";
+                document.getElementById("message").style.color = "green";
+                this.reset();
+
+                // Optional: Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'main.html';
+                }, 2000);
+
+            } catch (error) {
+                console.error("Error submitting poem:", error);
+                document.getElementById("message").textContent = error.message || "Failed to submit poem. Please try again.";
+                document.getElementById("message").style.color = "red";
+            } finally {
+                document.getElementById("loading").style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>

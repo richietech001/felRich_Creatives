@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FelRich Creatives</title>
+    <meta name="description" content="Poetry Haven – A tranquil space to read and share poetry.">
+    <meta name="keywords" content="poetry, poems, write, publish, creative, art, literature">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Ensure line breaks are preserved in poem previews */
+        .card-text {
+            white-space: pre-wrap;
+        }
+
+        /* Poem card styling */
+        .poem-card {
+            transitioninsurance: transform 0.3s ease;
+        }
+        .poem-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">FelRich Creatives</a>
+            <button class="navbar-toggler" type="button" data-bs-toinsuranceggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="library.html">Library</a></li>
+                    <li class="nav-item"><a class="nav-link" href="submit.html">Submit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="featured text-center text-white d-flex align-items-center justify-content-center"
+             style="background: url('images/felrich_logo.jpg') center/cover no-repeat; height: 30vh; position: relative;">
+        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4);"></div>
+        <div class="container position-relative">
+            <h1 class="display-4 fw-bold mb-3">FelRich Creatives</h1>
+            <p class="lead fst-italic">"Giving young creatives a voice that echoes"</p>
+            <a href="poems/featured.html" class="btn btn-primary mt-3 px-4 py-2 fw-semibold">Join Community</a>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-5 text-center fw-bold">Latest Poems</h2>
+            <div id="poems-container" class="row g-4">
+                <!-- Poems will be loaded here -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-5 text-center fw-bold">Short Stories</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Beneath the Stars</h5>
+                            <p class="text-muted small mb-2">by Wambugu</p>
+                            <p class="card-text">The night wraps me in her velvet arms...</p>
+                            <a href="stories/beneath-the-stars.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Winds of Memory</h5>
+                            <p class="text-muted small mb-2">by Ayanna K.</p>
+                            <p class="card-text">Every breeze carries the scent of yesterday...</p>
+                            <a href="stories/winds-of-memory.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-bodied">
+                            <h5 class="card-title">Silent Echoes</h5>
+                            <p class="text-muted small mb-2">by J. Mugo</p>
+                            <p class="card-text">Words unspoken still linger in the room...</p>
+                            <a href="stories/silent-echoes.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-5 text-center fw-bold">Articles</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Creative Growth in Kenya</h5>
+                            <p class="text-muted small mb-2">by Wambugu</p>
+                            <p class="card-text">Exploring the evolving creative scene and opportunities for young artists...</p>
+                            <a href="articles/creative-growth.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Digital Storytelling</h5>
+                            <p class="text-muted small mb-2">by Ayanna K.</p>
+                            <p class="card-text">How technology is reshaping the way we tell and share stories...</p>
+                            <a href="articles/digital-storytelling.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Power of Poetry</h5>
+                            <p class="text-muted small mb-2">by J. Mugo</p>
+                            <p class="card-text">Poetry as a tool for healing, activism, and community building...</p>
+                            <a href="articles/power-of-poetry.html" class="btn btn-outline-dark btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 FelRich Creatives | Crafted with ❤️ by Wambugu</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="config.js"></script>
+    <script>
+        async function fetchPoems() {
+            const url = `${window.env.SUPABASE_URL}/rest/v1/poems?select=id,title,author,content,created_at&order=created_at.desc&limit=3`;
+            const headers = {
+                'apikey': window.env.SUPABASE_API_KEY,
+                'Authorization': `Bearer ${window.env.SUPABASE_API_KEY}`
+            };
+
+            try {
+                const response = await fetch(url, { headers });
+                const poems = await response.json();
+                displayPoems(poems);
+            } catch (error) {
+                console.error('Error fetching poems:', error);
+                document.getElementById('poems-container').innerHTML = '<div class="col-12 text-center"><p class="text-danger">Error loading poems. Please try again later.</p></div>';
+            }
+        }
+
+        function displayPoems(poems) {
+            const container = document.getElementById('poems-container');
+            container.innerHTML = '';
+
+            if (poems.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p>No poems found. Be the first to submit one!</p></div>';
+                return;
+            }
+
+            poems.forEach(poem => {
+                const poemElement = document.createElement('div');
+                poemElement.className = 'col-md-4';
+                poemElement.innerHTML = `
+                    <div class="card h-100 shadow-sm poem-card">
+                        <div class="card-body">
+                            <h5 class="card-title">${escapeHtml(poem.title)}</h5>
+                            <p class="text-muted small mb-2">by ${escapeHtml(poem.author)}</p>
+                            <p class="text-muted small mb-2">${new Date(poem.created_at).toLocaleDateString()}</p>
+                            <p class="card-text">${escapeHtml(poem.content.substring(0, 100))}${poem.content.length > 100 ? '...' : ''}</p>
+                            <button class="btn btn-outline-dark btn-sm read-more"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#poemModal"
+                                    data-title="${escapeHtml(poem.title)}"
+                                    data-author="${escapeHtml(poem.author)}"
+                                    data-content="${escapeHtml(poem.content)}">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(poemElement);
+            });
+        }
+
+        // Basic HTML escaping for XSS protection
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Initialize modal with poem data
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchPoems();
+
+            // Set up modal event listener
+            const poemModal = document.getElementById('poemModal');
+            if (poemModal) {
+                poemModal.addEventListener('show.bs.modal', function(event) {
+                    const button = event.relatedTarget;
+                    const title = button.getAttribute('data-title');
+                    const author = button.getAttribute('data-author');
+                    const content = button.getAttribute('data-content');
+
+                    const modalTitle = poemModal.querySelector('.modal-title');
+                    const modalAuthor = poemModal.querySelector('#poemModalAuthor');
+                    const modalContent = poemModal.querySelector('#poemModalContent');
+
+                    modalTitle.textContent = title;
+                    modalAuthor.textContent = `by ${author}`;
+                    modalContent.textContent = content;
+                });
+            }
+        });
+    </script>
+
+    <!-- Poem Modal -->
+    <div class="modal fade" id="poemModal" tabindex="-1" aria-labelledby="poemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="poemModalLabel">Poem Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted small mb-2" id="poemModalAuthor">Author</p>
+                    <pre id="poemModalContent" style="white-space: pre-wrap; font-family: inherit;">Poem content will appear here</pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
